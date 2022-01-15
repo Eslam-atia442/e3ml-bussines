@@ -12,6 +12,9 @@ class Course extends Model
 {
     use HasFactory,softdeletes;
     protected $guarded = [];
+    protected $hidden = [
+        'deleted_at',
+    ];
 
     public function Category()
     {

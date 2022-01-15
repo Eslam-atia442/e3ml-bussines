@@ -3,12 +3,13 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use JWTAuth;
 use Exception;
-use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 
-class JwtMiddleware
+class JwtMiddleware extends BaseMiddleware
 {
+
     /**
      * Handle an incoming request.
      *
@@ -31,5 +32,4 @@ class JwtMiddleware
         }
         return $next($request);
     }
-
 }

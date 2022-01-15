@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\CoursesDataTable;
+use App\Events\ViewsEvent;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
@@ -28,7 +29,7 @@ class CourseController extends Controller
 
     public function store(CourseRequest $request)
     {
-        $image = Helper::uploadImage('Course', 'png', $request->image);
+        $image = uploadImage('Course', 'png', $request->image);
         $data = Course::Create([
             'name' => $request->name,
             'hours' => $request->hours,
@@ -51,7 +52,7 @@ class CourseController extends Controller
     public function update(CourseRequest $request, $id)
     {
         $data = Course::findOrFail($id);
-        $image = Helper::updateImage('Course',  $data->image, 'png',$request->image);
+        $image = updateImage('Course',  $data->image, 'png',$request->image);
         $data = $data->update([
             'name' => $request->name,
             'hours' => $request->hours,

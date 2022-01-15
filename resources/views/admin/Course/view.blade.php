@@ -60,7 +60,7 @@
                             <div class="mr-6">
                                 <div class="font-weight-bold mb-2">Rate</div>
                                 <span
-                                    class="btn btn-sm btn-text btn-light-danger text-uppercase font-weight-bold">{{$data->rate ?? 'Not Rated Yet'}}</span>
+                                    class="btn btn-sm btn-text btn-light-danger text-uppercase font-weight-bold">{{$data->rating ?? 'Not Rated Yet'}} of 5 Stars</span>
                             </div>
                             <div class="mr-6">
                                 <div class="font-weight-bold mb-2">Views</div>

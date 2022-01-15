@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CourseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +24,14 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
 
 });
 
-Route::group(['middleware' => ['jwt.verify']], function () {
-
-
+    Route::group(['middleware' => ['jwt.verify']], function () {
+        Route::get('auth/logout', [AuthController::class, 'logout']);
+        //Courses
+        Route::get('allCourses', [CourseController::class, 'index']);
+        Route::get('viewCourse/{id}', [CourseController::class, 'view']);
+        Route::post('rateCourse', [CourseController::class, 'rateCourse']);
+        //Categories
+        Route::get('allCategories', [CategoryController::class, 'index']);
 
 
 });

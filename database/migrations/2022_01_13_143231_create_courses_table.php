@@ -19,11 +19,11 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->string('image');
-            $table->integer('rating')->nullable();
+            $table->decimal('rating')->nullable();
             $table->integer('views')->nullable();
             $table->enum('levels',['beginner','intermediate','high']);
             $table->integer('hours');
-            $table->enum('active',['0','1']);
+            $table->enum('active',['0','1'])->default('1');
             $table->softDeletes();
             $table->timestamps();
         });

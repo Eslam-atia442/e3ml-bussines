@@ -234,7 +234,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Datatables' => 'Yajra\Datatables\Facades\Datatables',
         'Helper' => App\Helpers\Helper::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+     'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
     ],
 
