@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 Route::get('/logout', [LoginController::class, 'logout'])->name('signout');
-Route::get('/',[FrontController::class, 'front'] );
+Route::get('/',[FrontController::class, 'front'] )->name('front');
 Route::get('/front/filter/{type}/{search}/{id}',[FrontController::class, 'filter'] );
 
 Route::group(['middleware' => 'auth:web'], function () {
