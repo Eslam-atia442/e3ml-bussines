@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,12 +20,11 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 Route::get('/logout', [LoginController::class, 'logout'])->name('signout');
-Route::get('/', function () {
-    return redirect(route('home'));
-});
+Route::get('/',[FrontController::class, 'front'] );
+Route::get('/front/filter/{type}/{search}/{id}',[FrontController::class, 'filter'] );
 
 Route::group(['middleware' => 'auth:web'], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/admin', [HomeController::class, 'index'])->name('admin');
     Route::group(['namespace' => 'admin', 'prefix' => 'categories'], function () {
         Route::get('/all', [CategoryController::class, 'index'])->name('categories.all');
         Route::get('/newCategory', [CategoryController::class, 'create'])->name('categories.add');

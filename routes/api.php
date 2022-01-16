@@ -32,7 +32,5 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
         Route::post('rateCourse', [CourseController::class, 'rateCourse']);
         //Categories
         Route::get('allCategories', [CategoryController::class, 'index']);
-
-
 });
 

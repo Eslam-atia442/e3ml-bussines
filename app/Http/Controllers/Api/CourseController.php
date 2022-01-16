@@ -51,7 +51,7 @@ class CourseController extends Controller
 
         $sum = ClientRating::where('course_id', $request->course_id)->sum('rate');
         $count = ClientRating::where('course_id', $request->course_id)->count();
-        $rate = number_format((float)$sum / $count, 1);
+        $rate = intval($sum / $count);
 
         Course::where('id', $request->course_id)->update(['rating' => $rate]);
 

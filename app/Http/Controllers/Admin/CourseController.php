@@ -29,14 +29,13 @@ class CourseController extends Controller
 
     public function store(CourseRequest $request)
     {
-        $image = uploadImage('Course', 'png', $request->image);
         $data = Course::Create([
             'name' => $request->name,
             'hours' => $request->hours,
             'cat_id' => $request->cat_id,
             'levels' => $request->levels,
             'description' => $request->description,
-            'image' => $image,
+            'image' =>  $request->image,
         ]);
         return redirect(route('courses.all'))->with('success', 'Course Added Successfully!');
     }
@@ -52,14 +51,13 @@ class CourseController extends Controller
     public function update(CourseRequest $request, $id)
     {
         $data = Course::findOrFail($id);
-        $image = updateImage('Course',  $data->image, 'png',$request->image);
         $data = $data->update([
             'name' => $request->name,
             'hours' => $request->hours,
             'cat_id' => $request->cat_id,
             'levels' => $request->levels,
             'description' => $request->description,
-            'image' => $image,
+            'image' =>  $request->image,
         ]);
         return redirect(route('courses.all'))->with('success', 'Course updated Successfully!');
     }

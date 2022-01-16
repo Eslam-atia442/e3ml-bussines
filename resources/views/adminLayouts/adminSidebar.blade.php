@@ -5,8 +5,8 @@
         <!--begin::Menu Nav-->
         <ul class="menu-nav">
 
-            <li class="menu-item @if( Request::segment(1)== 'home' ) menu-item-active @endif "  aria-haspopup="true">
-                <a href="{{route('home')}}" class="menu-link">
+            <li class="menu-item @if( Request::segment(1)== 'admin' ) menu-item-active @endif "  aria-haspopup="true">
+                <a href="{{route('admin')}}" class="menu-link">
                     <i class="menu-icon flaticon-home"></i>
                     <span class="menu-text">Dashboard</span>
                 </a>

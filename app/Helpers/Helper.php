@@ -6,22 +6,11 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 define('PAGINATION_COUNT', 10);
-function uploadImage(string $dir, string $format, $image = null)
+function upload($file, $dir)
 {
-    if ($image != null) {
-        $imageName = Carbon::now()->toDateString() . "-" . uniqid() . "." . $format;
-
-        if (!Storage::disk('public')->exists($dir)) {
-            Storage::disk('public')->makeDirectory($dir);
-        }
-        Storage::disk('public')->put($dir . '/' . $imageName, file_get_contents($image));
-
-
-    } else {
-        $imageName = 'def.png';
-    }
-
-    return $imageName;
+    $image = time() . uniqid() . '.' . $file->getClientOriginalExtension();
+    $file->move('uploads' . '/' . $dir, $image);
+    return $image;
 }
 
 function updateImage(string $dir, $old_image, string $format, $image = null)

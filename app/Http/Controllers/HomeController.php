@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\CentralLogics\Helpers;
+use App\Models\Category;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -24,6 +26,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function front()
+    {
+       $category= Category::paginate(PAGINATION_COUNT);
+        $data= Course::with('Category')->paginate(PAGINATION_COUNT);
+        return view('task',compact('data','category'));
+    }
     public function index()
     {
         return view('home')->with('success', 'Done');

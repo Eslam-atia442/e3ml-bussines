@@ -19,7 +19,7 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->string('image');
-            $table->decimal('rating')->nullable();
+            $table->decimal('rating')->default('1');
             $table->integer('views')->nullable();
             $table->enum('levels',['beginner','intermediate','high']);
             $table->integer('hours');

@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 class Course extends Model
 {
-    use HasFactory,softdeletes;
+    use HasFactory, softdeletes;
+
     protected $guarded = [];
     protected $hidden = [
         'deleted_at',
@@ -20,12 +21,20 @@ class Course extends Model
     {
         return $this->belongsTo(Category::class, 'cat_id');
     }
+
+    public function setImageAttribute($image)
+    {
+        if (is_file($image)) {
+            $imageFields = upload($image, 'Course');
+            $this->attributes['image'] = $imageFields;
+        }
+    }
+
     public function getImageAttribute($image)
     {
         if (!empty($image)) {
-            return asset('storage/app/public/course') . '/' . $image;
+            return asset('uploads/Course') . '/' . $image;
         }
         return asset('uploads/default.jpg');
     }
-
 }
